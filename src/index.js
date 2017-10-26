@@ -21,7 +21,7 @@ const getContracts = (dirpath) => {
 const checkErrors = (config) => {
   const errorMessage = `
     You are missing a contracts directory for your config. Please assign
-    the config.contractsDirectorya value of the path of your directory that holds all your contracts
+    the config.contractsDirectory a value of the path of your directory that holds all your contracts
   `;
 
   if (!config.contractsDirectory) {
@@ -29,8 +29,7 @@ const checkErrors = (config) => {
   }
 };
 
-// Accepts string argument structured like "[module].[type]" e.g
-// "random.boolean"
+// Accepts string argument structured like "[module].[type]" e.g "random.boolean"
 const buildFakerPrimitive = (value) => {
   const splitArgs = value.split('.');
   return faker[splitArgs[0]][splitArgs[1]]();
