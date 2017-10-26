@@ -3,10 +3,7 @@ const Hijacker = require('../lib/index');
 const path = require('path');
 
 const config = {
-  contractsDirectory: path.join(__dirname, '../contracts'),
-  get: [
-    {name: 'myResource', route: '/example_resource', params: {foo: 'bar'}}
-  ]
+  contractsDirectory: path.join(__dirname, '../contracts')
 };
 
 Hijacker(axios, config);

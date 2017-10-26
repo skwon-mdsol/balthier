@@ -42,13 +42,11 @@ function Hijacker (axiosInstance, config) {
 
   const mockAdapter = new MockAdapter(axiosInstance);
   const contracts = getContracts(config.contractsDirectory);
-
-  config.get.forEach(resource => {
-    const currentContract = contracts[resource.name];
-
-    if (currentContract) {
-      mockAdapter.onGet(resource.route, (resource.params || {})).reply(200, buildFakeResponse(currentContract.json));
-    }
+  Object.keys(contracts).forEach(name => {
+    const currentContract = contracts[name];
+    mockAdapter
+      .onGet(currentContract.route, (currentContract.params || {}))
+      .reply(200, buildFakeResponse(currentContract.json));
   });
 }
 
