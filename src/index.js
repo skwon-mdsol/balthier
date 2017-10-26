@@ -36,13 +36,32 @@ const buildFakerPrimitive = (value) => {
   return faker[splitArgs[0]][splitArgs[1]]();
 }
 
+const buildResponseArray = (contractSubset) => {
+  const result = [];
+  for (i = 0; i < contractSubset['amount']; i++) {
+    if (typeof contractSubset['data'] === 'object') {
+      result.push(walkAndBuildResponse(contractSubset['data']));
+    } else {
+      result.push(buildFakerPrimitive(contractSubset['data']));
+    }
+  }
+  return result
+}
+
 const walkAndBuildResponse = (contractSubset) => {
   const result = {};
+  let arr;
+  let i;
 
-  // Recursively dive into the contracts json structure
-  // TODO: FEATURE: make it work with arrays
   Object.keys(contractSubset).forEach(key => {
-    result[key] = (typeof contractSubset[key] === 'object') ? walkAndBuildResponse(contractSubset[key]) : buildFakerPrimitive(contractSubset[key]);
+    const curr = contractSubset[key];
+    if (curr['__data_type__'] === 'array') {
+      result[key] = buildResponseArray(curr);
+    } else if (typeof curr === 'object') {
+      result[key] = walkAndBuildResponse(curr)
+    } else {
+      result[key] = buildFakerPrimitive(curr);
+    }
   });
 
   return result;
