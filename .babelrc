@@ -1,8 +1,10 @@
 {
-  "presets": [["env", {
-    "targets": {
-      "ie": 11
-    },
-    "modules": false
-  }]]
+  "presets": [
+    ["env", {
+      "targets": {
+        "ie": 11
+      },
+      "modules": false
+    }]
+  ]
 }

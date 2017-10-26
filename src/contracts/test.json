@@ -1,0 +1,8 @@
+{
+  "name": "myResourceName",
+  "version": "1",
+  "json_representation": {
+    "uuid": "random.uuid",
+    "active": "random.boolean"
+  }
+}

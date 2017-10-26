@@ -4,16 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx babel src --watch --out-dir lib"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "faker": "^4.1.0"
+    "axios-mock-adapter": "^1.9.0",
+    "faker": "^4.1.0",
+    "sinon": "^4.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "axios": "^0.17.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }
