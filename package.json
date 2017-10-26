@@ -1,13 +1,13 @@
 {
-  "name": "balthier",
-  "version": "1.0.0",
+  "name": "Balthier",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "npx babel src --watch --out-dir lib"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Sean Kwon",
+  "license": "MIT",
   "dependencies": {
     "axios-mock-adapter": "^1.9.0",
     "faker": "^4.1.0",

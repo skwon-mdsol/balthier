@@ -29,24 +29,36 @@ const checkErrors = (config) => {
   }
 };
 
-const buildFakeResponse = (contract) => {
-  return Object.keys(contract).reduce((acc, key) => {
-    const splitArgs = contract[key].split('.');
-    acc[key] = faker[splitArgs[0]][splitArgs[1]]();
-    return acc;
-  }, {});
-};
+// Accepts string argument structured like "[module].[type]" e.g
+// "random.boolean"
+const buildFakerPrimitive = (value) => {
+  const splitArgs = value.split('.');
+  return faker[splitArgs[0]][splitArgs[1]]();
+}
+
+const walkAndBuildResponse = (contractSubset) => {
+  const result = {};
+
+  // Recursively dive into the contracts json structure
+  // TODO: FEATURE: make it work with arrays
+  Object.keys(contractSubset).forEach(key => {
+    result[key] = (typeof contractSubset[key] === 'object') ? walkAndBuildResponse(contractSubset[key]) : buildFakerPrimitive(contractSubset[key]);
+  });
+
+  return result;
+}
 
 function Hijacker (axiosInstance, config) {
   checkErrors(config);
 
   const mockAdapter = new MockAdapter(axiosInstance);
   const contracts = getContracts(config.contractsDirectory);
+
   Object.keys(contracts).forEach(name => {
     const currentContract = contracts[name];
     mockAdapter
       .onGet(currentContract.route, (currentContract.params || {}))
-      .reply(200, buildFakeResponse(currentContract.json));
+      .reply(200, walkAndBuildResponse(currentContract.json));
   });
 }
 
