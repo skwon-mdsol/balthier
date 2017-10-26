@@ -33,10 +33,11 @@ const checkErrors = (config) => {
 const buildFakerPrimitive = (value) => {
   const splitArgs = value.split('.');
   return faker[splitArgs[0]][splitArgs[1]]();
-}
+};
 
 const buildResponseArray = (contractSubset) => {
   const result = [];
+  let i;
   for (i = 0; i < contractSubset['amount']; i++) {
     if (typeof contractSubset['data'] === 'object') {
       result.push(walkAndBuildResponse(contractSubset['data']));
@@ -44,27 +45,25 @@ const buildResponseArray = (contractSubset) => {
       result.push(buildFakerPrimitive(contractSubset['data']));
     }
   }
-  return result
-}
+  return result;
+};
 
 const walkAndBuildResponse = (contractSubset) => {
   const result = {};
-  let arr;
-  let i;
 
   Object.keys(contractSubset).forEach(key => {
     const curr = contractSubset[key];
     if (curr['__data_type__'] === 'array') {
       result[key] = buildResponseArray(curr);
     } else if (typeof curr === 'object') {
-      result[key] = walkAndBuildResponse(curr)
+      result[key] = walkAndBuildResponse(curr);
     } else {
       result[key] = buildFakerPrimitive(curr);
     }
   });
 
   return result;
-}
+};
 
 function Hijacker (axiosInstance, config) {
   checkErrors(config);
