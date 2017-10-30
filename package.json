@@ -1,12 +1,14 @@
 {
-  "name": "Balthier",
+  "name": "balthier",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx babel src --watch --out-dir lib"
+    "dev": "npx babel src --watch --out-dir lib",
+    "compile": "npx babel src --out-dir lib",
+    "prepublic": "npm run compile"
   },
-  "author": "Sean Kwon",
+  "author": "Sean Kwon <seankwn@live.com>",
   "license": "MIT",
   "dependencies": {
     "axios-mock-adapter": "^1.9.0",
