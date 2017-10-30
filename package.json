@@ -1,6 +1,6 @@
 {
   "name": "balthier",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,12 +11,12 @@
   "author": "Sean Kwon <seankwn@live.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.0",
     "axios-mock-adapter": "^1.9.0",
     "faker": "^4.1.0",
     "sinon": "^4.0.1"
   },
   "devDependencies": {
-    "axios": "^0.17.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1"
   }
