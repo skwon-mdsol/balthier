@@ -16,6 +16,11 @@ sales demo.
 
 An axios proxy service that mocks get and post requests based on user JSON contracts. It uses faker to generate fake data
 
+## Installation
+
+`yarn add balthier`
+`npm install balthier`
+
 ## Example
 
 Create a GET request Contract and store it in some folder, lets say `fixtures`, and add the required params:
