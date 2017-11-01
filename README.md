@@ -23,7 +23,7 @@ An axios proxy service that mocks get and post requests based on user JSON contr
 
 ## Example
 
-Create a GET request Contract and store it in some folder, lets say `fixtures`, and add the required params:
+Create a GET request Contracts json file and store it in some folder, lets say `fixtures`, and add the required params:
 
 |required_params|description|
 |---------------|----|
@@ -33,7 +33,9 @@ Create a GET request Contract and store it in some folder, lets say `fixtures`, 
 |params|an object of your params with strict values. This can also be blank|
 |json|Object of key mapping to string representations of faker methods: https://github.com/marak/Faker.js/#api-methods|
 
+
 ```js
+// myExample.json
 {
   "name": "myResource", //required
   "version": "1.0.0",
