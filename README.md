@@ -20,7 +20,7 @@ An axios proxy service that mocks get and post requests based on user JSON contr
 
 Create a GET request Contract and store it in some folder, lets say `fixtures`, and add the required params:
 
-|required_params|descriptoin|
+|required_params|description|
 |---------------|----|
 |name|name of resource|
 |action|"post" / "get"|
