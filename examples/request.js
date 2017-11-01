@@ -1,7 +1,6 @@
 const axios = require('axios');
 const Hijacker = require('../lib/index');
 const path = require('path');
-const FileSync = require('lowdb/adapters/fileSync');
 
 const config = {
   contractsDirectory: path.join(__dirname, '../contracts')

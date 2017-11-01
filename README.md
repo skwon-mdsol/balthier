@@ -18,7 +18,7 @@ An axios proxy service that mocks get and post requests based on user JSON contr
 
 ## Example
 
-Create a GET request Contract and store it in some folder, lets say `fixtures`, and add the required params: 
+Create a GET request Contract and store it in some folder, lets say `fixtures`, and add the required params:
 
 |required_params|descriptoin|
 |---------------|----|
@@ -43,7 +43,7 @@ Create a GET request Contract and store it in some folder, lets say `fixtures`, 
     "settings": {
       "foo": "random.boolean",
       "bar": "random.boolean",
-      "lotsOfFoos": {"__data_type__": "array", "data": {"foo": "name.firstName"}, "counts": 3} 
+      "lotsOfFoos": {"__data_type__": "array", "data": {"foo": "name.firstName"}, "counts": 3}
       // arrays must be written in the strict format
     }
   }
@@ -54,9 +54,8 @@ Then call the Hijacker method from balthier with a config object that has a refe
 
 ```js
 const axios = require('axios');
-const Hijacker = require('../lib/index');
+const Hijacker = require('balthier');
 const path = require('path');
-const FileSync = require('lowdb/adapters/fileSync');
 
 const config = {
   contractsDirectory: path.join(__dirname, '../contracts') //required
