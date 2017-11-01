@@ -20,7 +20,6 @@ const getContracts = (dirpath) => {
 
 const checkErrors = (config) => {
   // TODO: perhaps place this somewhere else.
-  const contracts = getContracts(config.contractsDirectory);
   let error;
 
   if (!config.contractsDirectory) {
@@ -28,18 +27,6 @@ const checkErrors = (config) => {
       the config.contractsDirectory a value of the path of your directory that holds all your contracts`};
     throw error;
   }
-
-  // TODO: DRY this method by adding a callback?
-  Object.keys(contracts).forEach(name => {
-    const currentContract = contracts[name];
-    if (currentContract.action === 'post') {
-      if ((!currentContract.key || !currentContract.key.length)) {
-        error = {error: `Your post contract called ${currentContract.name} does not have "key"
-          parameter. Either add a "key" parameter or delete this contract`};
-        throw error;
-      }
-    }
-  });
 };
 
 // Accepts string argument structured like "[module].[type]" e.g "random.boolean"
